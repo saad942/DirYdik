@@ -1,0 +1,52 @@
+# ========================
+# Global Dependencies
+# ========================
+node_modules/
+.cache/
+dist/
+build/
+
+# ========================
+# Logs
+# ========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ========================
+# Environment Files
+# ========================
+.env
+.env.local
+.env.*.local
+
+# ========================
+# OS / IDE Files
+# ========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ========================
+# React Frontend (front-mld)
+# ========================
+front-mld/node_modules/
+front-mld/build/
+front-mld/.cache/
+front-mld/yarn.lock
+front-mld/package-lock.json
+
+# ========================
+# Express Backend (back-mld)
+# ========================
+back-mld/node_modules/
+back-mld/.env
+back-mld/package-lock.json
+
+# ========================
+# Optional (Ignore lock files if you don’t use them)
+# ========================
+yarn.lock
+package-lock.json

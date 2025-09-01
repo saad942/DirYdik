@@ -1,0 +1,240 @@
+/* Sidebar container */
+.pro-sidebar {
+  width: 260px;
+  height: 100vh;
+  background-color: #1a1a2e;
+  color: #eaeaea;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Sidebar header */
+.pro-sidebar-header {
+  padding: 20px;
+  text-align: center;
+  background-color: #162447;
+  border-bottom: 1px solid #0f3460;
+}
+
+.pro-sidebar-header h2 {
+  color: #eaeaea;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Sidebar menu */
+.pro-sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #0f3460 #1a1a2e;
+}
+
+.pro-sidebar-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pro-sidebar-menu::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+.pro-sidebar-menu::-webkit-scrollbar-thumb {
+  background-color: #0f3460;
+  border-radius: 3px;
+}
+
+.pro-sidebar-menu li {
+  margin: 10px 0;
+}
+
+.pro-sidebar-menu a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #eaeaea;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.pro-sidebar-menu a:hover {
+  background-color: #0f3460;
+  color: #f5a425;
+}
+
+.pro-sidebar-menu a:focus {
+  outline: 2px solid #f5a425;
+  outline-offset: 2px;
+}
+
+/* Active link styling */
+.pro-sidebar-menu a.active {
+  background-color: #0f3460;
+  color: #f5a425;
+}
+
+.pro-sidebar-menu .pro-icon {
+  margin-right: 15px;
+  font-size: 18px;
+  min-width: 20px;
+}
+
+/* Logout link with a distinct style */
+.pro-sidebar-menu .logout {
+  margin-top: auto;
+  background-color: #d72323;
+  color: #fff;
+}
+
+.pro-sidebar-menu .logout:hover {
+  background-color: #bf1d1d;
+}
+
+/* Mobile menu toggle button */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1001;
+  background-color: #1a1a2e;
+  color: #eaeaea;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s;
+}
+
+.mobile-menu-toggle:hover {
+  background-color: #162447;
+}
+
+.mobile-menu-toggle:focus {
+  outline: 2px solid #f5a425;
+  outline-offset: 2px;
+}
+
+/* Overlay for mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .sidebar-overlay {
+    display: block;
+  }
+
+  .pro-sidebar {
+    transform: translateX(-100%);
+    width: 280px;
+    box-shadow: none;
+  }
+
+  .pro-sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .pro-sidebar-header h2 {
+    font-size: 18px;
+  }
+
+  .pro-sidebar-menu a {
+    padding: 15px 20px;
+    font-size: 16px;
+  }
+
+  .pro-sidebar-menu .pro-icon {
+    margin-right: 12px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pro-sidebar {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .pro-sidebar-header {
+    padding: 15px;
+  }
+
+  .pro-sidebar-header h2 {
+    font-size: 16px;
+  }
+
+  .pro-sidebar-menu a {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .pro-sidebar-menu .pro-icon {
+    margin-right: 10px;
+    font-size: 14px;
+  }
+
+  .mobile-menu-toggle {
+    top: 10px;
+    left: 10px;
+    padding: 8px;
+    font-size: 16px;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .pro-sidebar {
+    width: 250px;
+  }
+
+  .pro-sidebar-menu {
+    padding-bottom: 20px;
+  }
+}
+
+/* Animation and box-sizing */
+.pro-sidebar * {
+  box-sizing: border-box;
+}
+
+/* Content area adjustment when sidebar is visible */
+@media (min-width: 769px) {
+  .main-content {
+    margin-left: 260px;
+    transition: margin-left 0.3s ease-in-out;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+}

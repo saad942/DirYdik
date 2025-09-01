@@ -1,0 +1,173 @@
+/* Layout container */
+.booking-page {
+  display: flex;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Left side */
+.cleaning-preferences {
+  background: #e1f0f5;
+  border-radius: 5px;
+  padding: 20px;
+  flex: 1;
+}
+
+/* Right side (sticky sidebar) */
+.booking-summary {
+  background: #e1f0f5;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 300px;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  height: fit-content;
+}
+
+/* Headings */
+h2 {
+  background-color: #4db9cb;
+  color: white;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+  margin: 0 -20px 15px -20px;
+  font-weight: bold;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 25px;
+}
+
+.section-divider {
+  margin: 30px 0;
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+}
+
+/* Buttons */
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #777;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-group button {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-group button.active,
+.btn-group button:hover {
+  border-color: #f2a51b;
+  background: #fff7e6;
+}
+
+/* Summary list */
+.booking-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+  color: #555;
+}
+
+.booking-summary ul li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  color: #25b8e6;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Home Info Counters */
+.home-info {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 120px;
+}
+
+.counter .icon {
+  font-size: 24px;
+  color: #4db9cb;
+}
+
+.counter input {
+  width: 60px;
+  padding: 6px;
+  text-align: center;
+  font-size: 16px;
+}
+.extras-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.extra-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.extra-btn .icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+  color: #4db9cb;
+}
+
+.extra-btn span {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.extra-btn:hover,
+.extra-btn.active {
+  background-color: #fff7e6;
+  border-color: #f2a51b;
+}

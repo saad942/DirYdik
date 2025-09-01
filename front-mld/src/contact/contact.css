@@ -1,0 +1,105 @@
+/* App.css or your CSS file */
+
+.container {
+    display: flex;
+    flex-direction: column; 
+    
+    border-radius: 8px;
+    background-color: #eeedf3;
+    color: #5c86bd;
+    height: 300px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.titlee {
+    margin-top: 40px;
+    font-size: 50px;
+}
+
+.pa {
+    font-size: 16px;
+}
+
+
+.form {
+    background-color: white;
+    color: #5c86bd;
+    height: 650px;
+    width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(32, 32, 32, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Label styles */
+  .form label {
+
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  /* Input and select box styling */
+  .form input,
+  .form select {
+    height: 70px;
+    width: 100%;               /* Full width of the container */
+    border-radius: 8px;        /* Rounded corners for a soft look */
+    border: 1px solid #ccc;    /* Light gray border */
+    font-size: 16px;           /* Adjust text size for readability */
+    background-color: #f9f9f9; /* Light gray background */
+    color: #333;               /* Dark text color for readability */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transition for focus */
+    margin-bottom: 20px;       /* Add space below the textarea */
+
+  }
+  .form input,
+  .form select:focus {
+    border-color: #5c86bd;     /* Change border color to blue on focus */
+    background-color: #fff;    /* Change background to white when focused */
+    outline: none;             /* Remove default focus outline */
+  }
+  
+  /* Button style */
+  .form button {
+    width: 30%;
+    height: 13%;
+    background-color: #5c86bd;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-left: 230px;
+  }
+  
+  /* Button hover effect */
+  .form button:hover {
+    background-color: #4c75a5;
+  }
+  
+  .message-textarea {
+    width: 100%;               /* Full width of the container */
+    min-height: 150px;         /* Set a minimum height */
+    padding: 12px;             /* Add padding inside for comfort */
+    border-radius: 8px;        /* Rounded corners for a soft look */
+    border: 1px solid #ccc;    /* Light gray border */
+    font-size: 16px;           /* Adjust text size for readability */
+    font-family: 'Arial', sans-serif; /* Use a clean sans-serif font */
+    background-color: #f9f9f9; /* Light gray background */
+    color: #333;               /* Dark text color for readability */
+    resize: vertical;          /* Allow users to resize the textarea vertically */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transition for focus */
+    margin-bottom: 20px;       /* Add space below the textarea */
+  }
+  
+  /* Focused state styling */
+  .message-textarea:focus {
+    border-color: #5c86bd;     /* Change border color to blue on focus */
+    background-color: #fff;    /* Change background to white when focused */
+    outline: none;             /* Remove default focus outline */
+  }
+  

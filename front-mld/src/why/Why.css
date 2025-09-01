@@ -1,0 +1,8 @@
+
+
+
+.container, .row, .col {
+    display: flex;
+    width: 100%; /* Ensure full width for these containers */
+}
+
