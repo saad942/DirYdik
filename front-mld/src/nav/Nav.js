@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Modal, Button, Spinner } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 function App() {
   const token = localStorage.getItem('token');
@@ -67,69 +68,68 @@ function App() {
     }
   };
 
-  return (
+   return (
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">DirYdik</a>
-          
-          <button 
-            className="navbar-toggler" 
-            type="button" 
-            data-bs-toggle="collapse" 
-            data-bs-target="#navbarNav" 
-            aria-controls="navbarNav" 
-            aria-expanded="false" 
+          <Link className="navbar-brand" to="/">DirYdik</Link>
+
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          
+
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto" style={{ marginLeft: '50px' }}>
+            <ul className="navbar-nav me-auto ms-5">
               <li className="nav-item">
-                <a className="nav-link" href="#">Our services</a>
+                <button className="nav-link btn btn-link">
+                  Our services
+                </button>
               </li>
+
               <li className="nav-item">
-                <a className="nav-link" href="/why">Why DirYdik</a>
+                <Link className="nav-link" to="/why">Why DirYdik</Link>
               </li>
+
               <li className="nav-item">
-                <a className="nav-link" href="/contact">Contact</a>
+                <Link className="nav-link" to="/contact">Contact</Link>
               </li>
+
               {token && (
                 <li className="nav-item">
-                  <a href="/Upcoming">
-                    <img 
-                      src="/images/clen.png" 
-                      className="profile-image" 
-                      alt="Upcoming" 
+                  <Link to="/Upcoming">
+                    <img
+                      src="/images/clen.png"
+                      className="profile-image"
+                      alt="Upcoming"
                     />
-                  </a>
+                  </Link>
                 </li>
               )}
             </ul>
-            
-            {/* Right side items - moved inside collapse for better mobile experience */}
+
             <div className="d-flex align-items-center">
-              <a 
-                href="tel:+212775931054" 
-                className="phone-icon"
-              >
+              <a href="tel:+212775931054" className="phone-icon">
                 <FontAwesomeIcon icon={faPhone} />
               </a>
 
               {!token ? (
-                <button
-                  className="action-button"
-                  onClick={handleShowModal}
-                >
+                <button className="action-button" onClick={() => setShowModal(true)}>
                   Create account
                 </button>
               ) : (
-                <button className="action-button">
-                  <a href='/clien' style={{ textDecoration: 'none', color: 'white' }}>
-                    Instant Quote
-                  </a>
+                <button
+                  className="action-button"
+                  onClick={() => navigate("/clien")}
+                >
+                  Instant Quote
                 </button>
               )}
             </div>
@@ -137,61 +137,48 @@ function App() {
         </div>
       </nav>
 
-      {/* Modal */}
-      <Modal show={showModal} onHide={handleCloseModal} centered>
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
         <Modal.Header closeButton>
-          <Modal.Title>{create ? 'Create account' : 'Login'}</Modal.Title>
+          <Modal.Title>{create ? "Create account" : "Login"}</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body style={{ backgroundColor: 'white' }}>
-          {msg && (
-            <div className="error-message" style={{ marginBottom: '15px' }}>
-              {msg}
-            </div>
-          )}
-          
+        <Modal.Body>
+          {msg && <div className="error-message mb-3">{msg}</div>}
+
           {loading && (
             <div className="d-flex justify-content-center">
-              <Spinner animation="border" variant="primary" />
-              <span style={{ marginLeft: '10px' }}>Please wait...</span>
+              <Spinner animation="border" />
             </div>
           )}
-          
+
           <form onSubmit={create ? handleUser : handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">Gmail:</label>
+              <label className="form-label">Gmail:</label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                id="email"
                 className="form-control"
                 type="email"
-                placeholder="Enter your Gmail"
                 required
               />
             </div>
 
             <p>
-              {create ? 'If you have an account, ' : 'If you want to create an account, '}
-              <a 
-                href="#!" 
-                onClick={(e) => {
-                  e.preventDefault();
+              {create ? "If you have an account, " : "If you want to create an account, "}
+              <button
+                type="button"
+                className="btn btn-link p-0"
+                onClick={() => {
                   setCreate(!create);
-                  setMsg('');
+                  setMsg("");
                 }}
               >
                 click here
-              </a>
+              </button>
             </p>
 
-            <Button 
-              variant="primary" 
-              type="submit" 
-              className="w-100" 
-              disabled={loading}
-            >
-              {create ? 'Create Account' : 'Login'}
+            <Button type="submit" className="w-100" disabled={loading}>
+              {create ? "Create Account" : "Login"}
             </Button>
           </form>
         </Modal.Body>
