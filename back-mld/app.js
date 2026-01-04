@@ -14,6 +14,10 @@ app.use(express.json()); // Parse JSON requests
 app.use(cors()); 
 app.use(express.static('uploads')); 
 
+if (!MONGODB_URI) {
+  console.error("Error: MONGODB_URI is not defined");
+  process.exit(1);
+}
 // MongoDB connection
 mongoose.connect(MONGODB_URI)
     .then(() => {
