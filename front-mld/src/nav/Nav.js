@@ -56,7 +56,7 @@ const navigate = useNavigate();
       localStorage.setItem('token', token);
       localStorage.setItem('email', response.data.email);
       localStorage.setItem('userId', JSON.stringify(userInfo));
-      window.location.href = '/';
+      navigate("/");
     } catch (error) {
       console.error('Login error:', error);
       if (error.response) {
