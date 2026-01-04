@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';import './Nav.css';  // Custom CSS
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; import './Nav.css';  // Custom CSS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Modal, Button, Spinner } from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function App() {
   const token = localStorage.getItem('token');
@@ -17,6 +17,7 @@ function App() {
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
+const navigate = useNavigate();
 
   const handleUser = async (e) => {
     e.preventDefault();
@@ -68,7 +69,7 @@ function App() {
     }
   };
 
-   return (
+  return (
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -89,7 +90,7 @@ function App() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto ms-5">
               <li className="nav-item">
-                <button className="nav-link btn btn-link">
+                <button className="nav-link">
                   Our services
                 </button>
               </li>
@@ -116,9 +117,14 @@ function App() {
             </ul>
 
             <div className="d-flex align-items-center">
-              <a href="tel:+212775931054" className="phone-icon">
+              <div
+                className="phone-icon"
+                onClick={() => window.location.href = "tel:+212775931054"}
+                style={{ cursor: "pointer" }}
+              >
                 <FontAwesomeIcon icon={faPhone} />
-              </a>
+              </div>
+
 
               {!token ? (
                 <button className="action-button" onClick={() => setShowModal(true)}>
