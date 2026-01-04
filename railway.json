@@ -1,12 +1,10 @@
 {
-  "build": [
-    {
-      "type": "nodejs",
-      "path": "back-mld"
-    },
-    {
-      "type": "static",
-      "path": "front-mld/build"
-    }
-  ]
+  "build": {
+    "install": "npm ci",
+    "build": "cd front-mld && npm install && npm run build",
+    "start": "cd back-mld && npm install && npm start"
+  },
+  "deploy": {
+    "start": "npm run start"
+  }
 }
