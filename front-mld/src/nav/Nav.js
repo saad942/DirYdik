@@ -14,9 +14,7 @@ function App() {
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
+  
 const navigate = useNavigate();
 
   const handleUser = async (e) => {
