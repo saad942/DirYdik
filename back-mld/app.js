@@ -7,17 +7,13 @@ require('dotenv').config();
 
 const app = express();
 const PORT = 3002; 
-const MONGODB_URI = process.env.MONGODB_URI;
-
+const MONGODB_URI = "mongodb://mongo:iRQpNhihJLQYWXmQfPFcXAEBJiESTBxL@tramway.proxy.rlwy.net:45931/MLD_bd?authSource=admin";
 // Middleware
 app.use(express.json()); // Parse JSON requests
 app.use(cors()); 
 app.use(express.static('uploads')); 
 
-if (!MONGODB_URI) {
-  console.error("Error: MONGODB_URI is not defined");
-  process.exit(1);
-}
+
 // MongoDB connection
 mongoose.connect(MONGODB_URI)
     .then(() => {

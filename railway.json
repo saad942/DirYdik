@@ -1,0 +1,12 @@
+{
+  "build": [
+    {
+      "type": "nodejs",
+      "path": "back-mld"
+    },
+    {
+      "type": "static",
+      "path": "front-mld/build"
+    }
+  ]
+}
