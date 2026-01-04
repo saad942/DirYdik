@@ -1,0 +1,8 @@
+{
+  "name": "mern-railway",
+  "private": true,
+  "scripts": {
+    "build": "cd front-mld && npm install && npm run build",
+    "start": "cd back-mld && npm install && npm start"
+  }
+}
