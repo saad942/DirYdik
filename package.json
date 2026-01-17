@@ -1,9 +1,9 @@
 {
-  "name": "mern-railway",
+  "name": "mld-fullstack",
   "private": true,
   "scripts": {
     "build": "cd front-mld && npm install && npm run build",
-    "start": "cd back-mld && node app.js"
+    "start": "cd back-mld && npm install && node app.js"
   },
   "engines": {
     "node": "18.x"
