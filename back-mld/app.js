@@ -2,11 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
-
 require("dotenv").config();
 
 const app = express();
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://mongo:iRQpNhihJLQYWXmQfPFcXAEBJiESTBxL@tramway.proxy.rlwy.net:45931/MLD_bd?authSource=admin";
+const PORT = process.env.PORT; // ⚠️ IMPORTANT
+
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  "mongodb://mongo:iRQpNhihJLQYWXmQfPFcXAEBJiESTBxL@tramway.proxy.rlwy.net:45931/MLD_bd?authSource=admin";
+
 console.log("Mongo URI:", MONGODB_URI);
 
 // Middleware
@@ -14,7 +18,27 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static("uploads"));
 
-// MongoDB connection
+/* =======================
+   SERVE REACT FIRST
+======================= */
+const buildPath = path.join(__dirname, "../front-mld/build");
+app.use(express.static(buildPath));
+
+/* =======================
+   API ROUTES
+======================= */
+app.use("/user", require("./routes/Routes"));
+
+/* =======================
+   REACT FALLBACK
+======================= */
+app.get("*", (req, res) => {
+  res.sendFile(path.join(buildPath, "index.html"));
+});
+
+/* =======================
+   DATABASE
+======================= */
 mongoose
   .connect(MONGODB_URI)
   .then(() => console.log("Connected to database"))
@@ -23,20 +47,9 @@ mongoose
     process.exit(1);
   });
 
-// API routes
-app.use("/user", require("./routes/Routes"));
-
-// Serve React build
-app.use(express.static(path.join(__dirname, "../front-mld/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "../front-mld/build", "index.html")
-  );
+/* =======================
+   START SERVER
+======================= */
+app.listen(PORT, () => {
+  console.log("Server running on port", PORT);
 });
-
-// Start server
-const PORT = process.env.PORT || 3002;
-app.listen(PORT, () =>
-  console.log("Server running on port", PORT)
-);
