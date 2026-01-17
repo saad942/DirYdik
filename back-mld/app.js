@@ -7,6 +7,7 @@ require("dotenv").config();
 
 const app = express();
 const MONGODB_URI = process.env.MONGODB_URI;
+console.log("Mongo URI:", MONGODB_URI);
 
 // Middleware
 app.use(express.json());
