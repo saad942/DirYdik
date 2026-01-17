@@ -5,37 +5,56 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 8080;
 
-// middleware
+/* =======================
+   PORT (CRITICAL)
+======================= */
+const PORT = process.env.PORT || 3000;
+
+/* =======================
+   MIDDLEWARE
+======================= */
 app.use(express.json());
 app.use(cors());
+app.use(express.static("uploads"));
 
-// ✅ ROOT RESPONSE (CRITICAL FOR RAILWAY)
+/* =======================
+   ROOT + HEALTH (CRITICAL)
+======================= */
+// Railway MUST get a fast response on "/"
 app.get("/", (req, res) => {
   res.status(200).send("App is running");
 });
 
-// health
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
+
+/* =======================
+   DATABASE
+======================= */
 const MONGODB_URI =
   process.env.MONGODB_URI ||
   "mongodb://mongo:iRQpNhihJLQYWXmQfPFcXAEBJiESTBxL@tramway.proxy.rlwy.net:45931/MLD_bd?authSource=admin";
 
-// mongo
-mongoose.connect(MONGODB_URI)
+console.log("Mongo URI:", MONGODB_URI);
+
+mongoose
+  .connect(MONGODB_URI)
   .then(() => console.log("Connected to database"))
   .catch((err) => {
-    console.error(err.message);
+    console.error("Mongo error:", err.message);
     process.exit(1);
   });
 
-// api
+/* =======================
+   API ROUTES
+======================= */
 app.use("/user", require("./routes/Routes"));
 
-// react
+/* =======================
+   SERVE REACT BUILD
+======================= */
 const buildPath = path.join(__dirname, "../front-mld/build");
 app.use(express.static(buildPath));
 
@@ -43,7 +62,9 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(buildPath, "index.html"));
 });
 
-// start
-app.listen(PORT, () => {
+/* =======================
+   START SERVER
+======================= */
+app.listen(PORT, "0.0.0.0", () => {
   console.log("Server running on port", PORT);
 });
