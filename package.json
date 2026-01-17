@@ -2,7 +2,10 @@
   "name": "mern-railway",
   "private": true,
   "scripts": {
-    "start": "cd back-mld && npm install && node app.js",
-    "build": "cd front-mld && npm install && npm run build"
+    "build": "cd front-mld && npm install && npm run build",
+    "start": "cd back-mld && node app.js"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
