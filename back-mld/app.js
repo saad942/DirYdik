@@ -20,10 +20,12 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  "mongodb://mongo:iRQpNhihJLQYWXmQfPFcXAEBJiESTBxL@tramway.proxy.rlwy.net:45931/MLD_bd?authSource=admin";
 
 // mongo
-mongoose
-  .connect(process.env.MONGODB_URI)
+mongoose.connect(MONGODB_URI)
   .then(() => console.log("Connected to database"))
   .catch((err) => {
     console.error(err.message);
