@@ -6,7 +6,7 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://mongo:iRQpNhihJLQYWXmQfPFcXAEBJiESTBxL@tramway.proxy.rlwy.net:45931/MLD_bd?authSource=admin";
 console.log("Mongo URI:", MONGODB_URI);
 
 // Middleware
