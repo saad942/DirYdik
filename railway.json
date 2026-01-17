@@ -2,7 +2,7 @@
   "build": {
     "install": "npm ci",
     "build": "cd front-mld && npm install && npm run build",
-    "start": "cd back-mld && npm install && npm start"
+    "start": "cd back-mld && npm install && node app.js"
   },
   "deploy": {
     "start": "npm run start"
