@@ -54,7 +54,7 @@ const ProSidebar = () => {
             </a>
           </li>
           <li>
-            <a href="/logout" className="logout" onClick={closeMobileMenu}>
+            <a  className="logout" onClick={closeMobileMenu}>
               <FaSignOutAlt className="pro-icon" />
               <span>Logout</span>
             </a>

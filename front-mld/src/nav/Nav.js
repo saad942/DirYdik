@@ -16,7 +16,12 @@ function App() {
   const [loading, setLoading] = useState(false);
   
 const navigate = useNavigate();
-
+ const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('userId');
+    navigate("/");
+  }
   const handleUser = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -129,12 +134,20 @@ const navigate = useNavigate();
                   Create account
                 </button>
               ) : (
-                <button
-                  className="action-button"
-                  onClick={() => navigate("/clien")}
-                >
-                  Instant Quote
-                </button>
+                 <>
+                  <button
+                    className="action-button"
+                    onClick={() => navigate("/clien")}
+                  >
+                    Instant Quote
+                  </button>
+                  <button 
+                    className="action-button ms-2"
+                    onClick={handleLogout}
+                  >
+                    lougout
+                  </button>
+                </>
               )}
             </div>
           </div>

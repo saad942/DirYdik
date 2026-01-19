@@ -1,31 +1,32 @@
 import React from 'react';
-import { DollarSign, Users, Heart, GraduationCap } from 'lucide-react';
+import Nav from '../nav/Nav';
 
 function Why() {
   const missionCards = [
     {
-      icon: DollarSign,
+      emoji: "💰",
       title: "Industry-Leading Wages",
       description: "Our staff are full-time, W2 employees that are the highest-paid housekeepers in Austin, with wages ranging from $19-28 an hour, reflecting our recognition of their hard work and dedication."
     },
     {
-      icon: Users,
+      emoji: "👥",
       title: "Supporting Working Mothers",
       description: "We understand the dual responsibilities of work and family. Our scheduling ensures almost all our staff, many of whom are mothers, can finish their workday by 3 pm for family time."
     },
     {
-      icon: Heart,
+      emoji: "❤️",
       title: "Comprehensive Health Benefits",
       description: "We provide full health insurance coverage for our employees and their families, ensuring peace of mind and access to quality healthcare when they need it most."
     },
     {
-      icon: GraduationCap,
+      emoji: "🎓",
       title: "Educational Scholarships",
       description: "We invest in our team's future by offering educational scholarships and professional development opportunities to help them achieve their personal and career goals."
     }
   ];
 
   return (
+    <><Nav/>
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-blue-500 to-blue-700 text-white py-20 px-4">
@@ -41,14 +42,13 @@ function Why() {
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {missionCards.map((card, index) => {
-            const Icon = card.icon;
             return (
               <div
                 key={index}
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
               >
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                  <Icon className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-3xl">
+                  {card.emoji}
                 </div>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">
                   {card.title}
@@ -85,12 +85,16 @@ function Why() {
               <div className="aspect-video rounded-2xl shadow-2xl overflow-hidden">
                 <video
                   src="/images/House Cleaning.mp4"
+                  poster="/images/video-poster.jpg"
                   autoPlay
                   loop
                   muted
                   playsInline
                   className="w-full h-full object-cover"
                   aria-label="House Cleaning Video"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
                 />
               </div>
               {/* Decorative elements */}
@@ -121,6 +125,7 @@ function Why() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
