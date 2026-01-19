@@ -7,22 +7,21 @@ require("dotenv").config();
 const app = express();
 
 /* =======================
-   PORT (CRITICAL)
+   PORT
 ======================= */
-const PORT =3002;
+const PORT = process.env.PORT || 3002;
 
 /* =======================
    MIDDLEWARE
 ======================= */
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static("uploads"));
 
 /* =======================
-   ROOT + HEALTH (CRITICAL)
+   HEALTH CHECK
 ======================= */
-
-
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
@@ -30,27 +29,25 @@ app.get("/health", (req, res) => {
 /* =======================
    DATABASE
 ======================= */
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb://mongo:iRQpNhihJLQYWXmQfPFcXAEBJiESTBxL@tramway.proxy.rlwy.net:45931/MLD_bd?authSource=admin";
-
-console.log("Mongo URI:", MONGODB_URI);
+if (!process.env.MONGODB_URI) {
+  throw new Error("MONGODB_URI is missing");
+}
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("Connected to database"))
   .catch((err) => {
-    console.error("Mongo error:", err.message);
+    console.error("Mongo error:", err);
     process.exit(1);
   });
 
 /* =======================
-   API ROUTES
+   ROUTES
 ======================= */
 app.use("/user", require("./routes/Routes"));
 
 /* =======================
-   SERVE REACT BUILD
+   SERVE REACT
 ======================= */
 const buildPath = path.join(__dirname, "../front-mld/build");
 app.use(express.static(buildPath));
