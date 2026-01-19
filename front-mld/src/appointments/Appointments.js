@@ -41,7 +41,7 @@ function Appointments() {
     // Fetching users
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:3002/user/getU");
+        const response = await axios.get("/user/getU");
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -55,7 +55,7 @@ function Appointments() {
     // Fetching all appointments
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get("http://localhost:3002/user/getAll");
+        const response = await axios.get("/user/getAll");
         setAppointments(response.data);
       } catch (error) {
         console.error("An error occurred:", error.message);

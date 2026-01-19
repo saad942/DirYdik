@@ -155,7 +155,7 @@ const AppointmentDisplay = () => {
   useEffect(() => {
     if (user && user.id) {
       axios
-        .get(`http://localhost:3002/user/getBook/${user.id}`)
+        .get(`/user/getBook/${user.id}`)
         .then((response) => {
           setAppointments(response.data);
           setLoading(false);
@@ -178,7 +178,7 @@ const AppointmentDisplay = () => {
   const handleCancel = async (bookId) => {
     if (window.confirm("Are you sure you want to cancel this appointment?")) {
       try {
-        // await axios.delete(`http://localhost:3002/user/cancelBook/${bookId}`);
+        // await axios.delete(`/user/cancelBook/${bookId}`);
         setAppointments((prev) => prev.filter((apt) => apt.bookId !== bookId));
       } catch (error) {
         console.error("Error cancelling appointment:", error);

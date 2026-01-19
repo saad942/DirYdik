@@ -12,7 +12,7 @@ const UserList = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:3002/user/getBooks');
+        const response = await axios.get('/user/getBooks');
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users', error);
@@ -25,7 +25,7 @@ const UserList = () => {
   // Fetch books for a specific user
   const handleViewBooks = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:3002/user/getBooks/${userId}`);
+      const response = await axios.get(`/user/getBooks/${userId}`);
       setBookDetails((prevDetails) => ({
         ...prevDetails,
         [userId]: response.data, // Store books for the specific user
@@ -39,7 +39,7 @@ const UserList = () => {
 
   const deleteUser = async (userId) => {
     try {
-        const response = await axios.delete(`http://localhost:3002/user/deleteUser/${userId}`);
+        const response = await axios.delete(`/user/deleteUser/${userId}`);
         console.log(response);
         console.log('User deleted successfully');
         setUsers(users.filter(item => item.userId!== userId));

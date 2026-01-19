@@ -14,7 +14,7 @@ function Contact() {
   const send = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3002/user/contact', {
+      const response = await axios.post('/user/contact', {
         about, name, phone, email, message
       });
       

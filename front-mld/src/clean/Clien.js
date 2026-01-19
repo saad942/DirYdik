@@ -71,7 +71,7 @@
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();  // Prevent the default form submission behavior
 //     try {
-//       const response = await axios.post('http://localhost:3002/user/book', { 
+//       const response = await axios.post('/user/book', { 
 //         userId:user.id ,
 //         zip: bookingDetails.zipCode,
 //         cleaningType: bookingDetails.cleaningType,
@@ -97,7 +97,7 @@
 //   const handleUser = async (e) => {
 //     e.preventDefault();  
 //     try {
-//       const response = await axios.post('http://localhost:3002/user/create', { 
+//       const response = await axios.post('/user/create', { 
 //         userId:user.id ,
 //         firstname: bookingDetails.firstName,
 //         lastname: bookingDetails.lastName,
@@ -312,7 +312,7 @@ const handleSubmite = async (e) => {
 
   try {
     // Submit booking
-    const bookingResponse = await axios.post('http://localhost:3002/user/book', {
+    const bookingResponse = await axios.post('/user/book', {
       userId: user.id,
       zip: formData.zipCode,
       cleaningType: formData.cleaningType,
@@ -325,7 +325,7 @@ const handleSubmite = async (e) => {
     });
 
     // Submit user
-    const userResponse = await axios.post('http://localhost:3002/user/create', {
+    const userResponse = await axios.post('/user/create', {
       userId: user.id,
       firstname: formData.firstName,
       lastname: formData.lastName,

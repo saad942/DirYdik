@@ -20,7 +20,7 @@ const Dashboard = () => {
     error: null
   });
 
-  const API_BASE_URL = 'http://localhost:3002/user';
+  const API_BASE_URL = '/user';
 
   const fetchDashboardData = async () => {
     try {
