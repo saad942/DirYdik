@@ -312,7 +312,7 @@ const handleSubmite = async (e) => {
 
   try {
     // Submit booking
-    const bookingResponse = await axios.post('/user/book', {
+    const bookingResponse = await axios.post('http://localhost:3002/user/book', {
       userId: user.id,
       zip: formData.zipCode,
       cleaningType: formData.cleaningType,
@@ -325,7 +325,7 @@ const handleSubmite = async (e) => {
     });
 
     // Submit user
-    const userResponse = await axios.post('/user/create', {
+    const userResponse = await axios.post('http://localhost:3002/user/create', {
       userId: user.id,
       firstname: formData.firstName,
       lastname: formData.lastName,

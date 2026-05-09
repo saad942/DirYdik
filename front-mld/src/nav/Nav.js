@@ -28,7 +28,7 @@ const navigate = useNavigate();
     setMsg('');
 
     try {
-      const response = await axios.post('/user/register', {
+      const response = await axios.post('http://localhost:3002/user/register', {
         email: email
       });
 
@@ -53,7 +53,7 @@ const navigate = useNavigate();
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('/user/login', { email: email });
+      const response = await axios.post('http://localhost:3002/user/login', { email: email });
       const token = response.data.token;
       const userInfo = response.data.userInfo;
       localStorage.setItem('token', token);

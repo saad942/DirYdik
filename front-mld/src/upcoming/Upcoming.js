@@ -155,7 +155,7 @@ const AppointmentDisplay = () => {
   useEffect(() => {
     if (user && user.id) {
       axios
-        .get(`/user/getBook/${user.id}`)
+        .get(`http://localhost:3002/user/getBook/${user.id}`)
         .then((response) => {
           setAppointments(response.data);
           setLoading(false);

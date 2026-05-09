@@ -24,7 +24,7 @@ router.get('/getBooks', getUser);
 router.delete('/deleteUser/:userId', deleteUser);
 router.get('/getAll',getAllBook);
 router.get("/getcount",countUser);
-router.put('/user/updateStatut/:Id', avtiveBook);
+router.put('/updateStatut/:Id', avtiveBook);
 router.get('/countStatus',count);
 router.get('/getUserid/:userId',getUserid);
 

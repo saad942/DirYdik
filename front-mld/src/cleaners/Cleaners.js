@@ -30,7 +30,7 @@ function Cleaners() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("/user/getU");
+        const response = await axios.get("http://localhost:3002/user/getU");
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -43,7 +43,7 @@ function Cleaners() {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get("/user/getAll");
+        const response = await axios.get("http://localhost:3002/user/getAll");
         setAppointments(response.data);
       } catch (error) {
         console.error("An error occurred:", error.message);
@@ -55,7 +55,7 @@ function Cleaners() {
 
   const handleStatusChange = async (bookId) => {
     try {
-      const response = await axios.put(`/user/updateStatut/${bookId}`);
+      const response = await axios.put(`http://localhost:3002/user/updateStatut/${bookId}`);
       const updated = response.data;
 
       setAppointments((prev) =>
@@ -81,7 +81,7 @@ function Cleaners() {
 
     try {
       const response = await axios.put(
-        `/user/updateAppoinment/${bookId}/${userId}`,
+        `http://localhost:3002/user/updateAppoinment/${bookId}/${userId}`,
         { booking, user }  // <-- send the data here
       );
 
@@ -115,7 +115,7 @@ function Cleaners() {
 
   const deletedAppoinment = async (bookId) => {
     try {
-      const response = await axios.delete(`/user/deletedAppoinment/${bookId}`);
+      const response = await axios.delete(`http://localhost:3002/user/deletedAppoinment/${bookId}`);
       console.log(response);
       console.log('Appoinment deleted successfully');
       setAppointments(appointments.filter(item => item.bookId !== bookId));
